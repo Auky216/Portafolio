@@ -6,6 +6,7 @@ import { FaAws } from "react-icons/fa";
 import { FaPython } from "react-icons/fa";
 import { SiCplusplus } from "react-icons/si";
 import { FaJs } from "react-icons/fa";
+import { SiNextdotjs } from "react-icons/si";
 
 
 
@@ -14,22 +15,23 @@ export default function Language() {
     return (
         <div className="border border-white">
             <div className="border border-white p-2">
-              <h1 className="text-white text-xs">Lenguajes de Programacion</h1>
+                <h1 className="text-white text-xs">Programming Languages</h1>
             </div>
-            <div className="boder border-white flex flex-row gap-4 p-2">
-            <FaReact />
-            <FaPython />
-            <SiCplusplus />
-            <FaHtml5 />
-            <FaCss3Alt />
-            <FaVuejs />
-            <FaAws />
-            <FaJs />
+            <div className="border-b border-white flex flex-row gap-4 p-2">
+                <FaReact />
+                <FaPython />
+                <SiCplusplus />
+                <FaHtml5 />
+                <FaCss3Alt />
+                <FaVuejs />
+                <SiNextdotjs />
+                <FaAws />
+                <FaJs />
 
 
 
             </div>
-          </div>
+        </div>
     );
 
 }
