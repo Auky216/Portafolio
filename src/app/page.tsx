@@ -2,13 +2,19 @@ import Image from "next/image";
 import Profile from "./components/home/profile";
 import Language from "./components/home/language";
 import Experience from "./components/home/experience";
+import Proyects from "./components/home/proyects";
+import Header from "./components/home/header";
+
 import { FaMedal } from "react-icons/fa";
 
-
 export default function Home() {
-  return (
+  return (  
+    <div>
+      <Header />
+      
     <div className="bg-[url('https://images4.alphacoders.com/138/thumb-1920-1383046.jpg')]
      bg-cover bg-center h-screen w-screen flex justify-center items-center ">
+      
       <div className="bg-black/75 h-full w-1/2 p-5 flex flex-row" >
 
         <div className="w-3/4 flex flex-col gap-4 pr-5">
@@ -23,6 +29,7 @@ export default function Home() {
 
           <Language />
           <Experience />
+          <Proyects />
           
         </div>
 
@@ -35,6 +42,10 @@ export default function Home() {
         </div>
           
       </div>
+    </div>
+    <div className="h-16">
+<h1>final           </h1>
+    </div>
     </div>
   );
 }
