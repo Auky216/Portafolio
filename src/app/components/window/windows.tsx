@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { FaCircle } from "react-icons/fa";
+import Safari from "../Safari/Safari";
 
 type DraggableWindowProps = {
   app: string;
@@ -149,10 +150,8 @@ export default function DraggableWindow({ app, isOpen }: DraggableWindowProps) {
           </div>
 
           {/* Window content */}
-          <div className="p-4">
-            <p>This is some content inside the window.</p>
-            <p>Resize, minimize, or close the window!</p>
-          </div>
+            {app === "Safari" && <Safari />}
+          
         </div>
       )}
     </div>
