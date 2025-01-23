@@ -1,6 +1,6 @@
 "use client";
 type NavbarProps = {
-    onAplicationClick : (app : string) => void;
+    onAplicationClick : (app : string ,isOpen : boolean ) => void;
 };
 
 export default function Navbar({onAplicationClick} : NavbarProps) {
@@ -11,32 +11,38 @@ export default function Navbar({onAplicationClick} : NavbarProps) {
           <img
             className="size-16 transition-transform transform hover:scale-125"
             src="https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/8204ffaf2c6f9f46a1a803a96c91e7d5_low_res_Safari.png"
-            onClick={() => onAplicationClick("Safari")}
+            alt="Safari"
+            onClick={() => onAplicationClick("Safari",true)}
           />
           <img
             className="size-16 transition-transform transform hover:scale-125"
             src="https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/c042465c64b6c0c06ef0525e5a7bcb12_low_res_App_Store.png"
-            onClick={() => onAplicationClick("App Store")}
+            alt="App Store"
+            onClick={() => onAplicationClick("App Store",true)}
           />
           <img
             className="size-16 transition-transform transform hover:scale-125"
             src="http://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/a2b41bcb7e94def55c6cfa9ecf586b13_fCGMiEOWax.png"
-            onClick={() => onAplicationClick("LinkedIn")}
+            alt="LinkedIn"
+            onClick={() => onAplicationClick("LinkedIn",true)}
           />
           <img
             className="size-16 transition-transform transform hover:scale-125"
             src="https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/ba3ad96efac721276cee376c99b9388f_low_res_Spotify_black.png"
-            onClick={() => onAplicationClick("Spotify")}
+            alt="Spotify"
+            onClick={() => onAplicationClick("Spotify",true)}
           />
           <img
             className="size-16 transition-transform transform hover:scale-125"
             src="https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/b0eaa96aed8d965169a2b0c23f5dad04_low_res_Github_Desktop.png"
-            onClick={() => onAplicationClick("GitHub")}
+            alt="GitHub"
+            onClick={() => onAplicationClick("GitHub",true)}
           />
           <img
             className="size-16 transition-transform transform hover:scale-125"
             src="https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/7abc86d5d547522303785e02f3a49f43_low_res_Folder_Peek.png"
-            onClick={() => onAplicationClick("Folder")}
+            alt="Folder"
+            onClick={() => onAplicationClick("Folder",true)}
           />
         </div>
       </div>

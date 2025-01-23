@@ -1,30 +1,39 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { FaCircle } from "react-icons/fa";
+
+type DraggableWindowProps = {
+  app: string;
+  isOpen: boolean;
+};
 
 // Defining the types for the position state
 type Position = {
   x: number;
   y: number;
-  offsetX?: number;  // Optional properties for the offset
+  offsetX?: number; // Optional properties for the offset
   offsetY?: number;
 };
 
-export default function DraggableWindow() {
+export default function DraggableWindow({ app, isOpen }: DraggableWindowProps) {
   // Default size of the window
   const windowWidth = 800;
   const windowHeight = 600;
 
   // Initialize the position and size state
   const [position, setPosition] = useState<Position>({
-    x: 0, // Start at the top-left corner (0, 0)
-    y: 0, 
+    x: -370, // Start at the top-left corner (0, 0)
+    y: -370,
   });
 
   const [isDragging, setIsDragging] = useState(false); // State to track if dragging is active
   const [isMinimized, setIsMinimized] = useState(false); // State to track if window is minimized
   const [isMaximized, setIsMaximized] = useState(false); // State to track if window is maximized
-  const [size, setSize] = useState({ width: windowWidth, height: windowHeight }); // Default large size of the window
+  const [size, setSize] = useState({
+    width: windowWidth,
+    height: windowHeight,
+  }); // Default large size of the window
 
   // Handle the mouse down event to begin dragging
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -73,6 +82,17 @@ export default function DraggableWindow() {
     alert("Window closed");
   };
 
+  // Effect to center the window when it is opened
+  useEffect(() => {
+    if (isOpen && position.x === -370 && position.y === -370) {
+      // Solo centra la ventana si está en su posición inicial
+      const centerX = window.innerWidth / 2 - windowWidth / 2;
+      const centerY = window.innerHeight / 2 - windowHeight / 2;
+      setPosition({ x: centerX, y: centerY });
+    }
+  }, [isOpen]);
+  
+
   return (
     <div
       onMouseMove={handleMouseMove}
@@ -82,7 +102,7 @@ export default function DraggableWindow() {
     >
       {!isMinimized && (
         <div
-          className="absolute bg-gray-800 text-white rounded-lg  shadow-xl cursor-grab active:cursor-grabbing"
+          className="absolute text-white rounded-lg shadow-xl cursor-grab active:cursor-grabbing"
           style={{
             top: `${position.y}px`,
             left: `${position.x}px`,
@@ -93,24 +113,39 @@ export default function DraggableWindow() {
           {/* Window title bar */}
           <div
             onMouseDown={handleMouseDown}
-            className="flex items-center p-1 bg-white cursor-grab w-full rounded-t-lg"
+            className="flex items-center justify-between p-1 bg-white cursor-grab w-full rounded-t-lg"
           >
-            <div className="flex ">
+            <div className="flex gap-1">
               {/* Close button */}
-              <button onClick={handleClose} className="text-xs rounded px-2 py-1">
+              <button
+                onClick={handleClose}
+                className="text-xs rounded px-2 py-1"
+              >
                 <FaCircle className="text-red-500" />
               </button>
 
               {/* Minimize button */}
-              <button onClick={handleMinimize} className="text-xs rounded px-2 py-1">
+              <button
+                onClick={handleMinimize}
+                className="text-xs rounded px-2 py-1"
+              >
                 <FaCircle className="text-yellow-500" />
               </button>
 
               {/* Maximize button */}
-              <button onClick={handleMaximize} className="text-xs rounded px-2 py-1">
+              <button
+                onClick={handleMaximize}
+                className="text-xs rounded px-2 py-1"
+              >
                 <FaCircle className="text-green-500" />
               </button>
             </div>
+
+            {/* Window title */}
+            <p className="text-gray-500">{app}</p>
+
+            {/* Espacio vacío para centrar */}
+            <div className="w-12"></div>
           </div>
 
           {/* Window content */}
