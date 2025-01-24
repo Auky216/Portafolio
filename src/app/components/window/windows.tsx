@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Rnd } from 'react-rnd';
 import Safari from '@/app/components/Safari/Safari';
 import { FaTimes, FaWindowMaximize } from 'react-icons/fa';
@@ -7,13 +7,11 @@ import 'animate.css/animate.min.css';
 type WindowProps = {
   app: string;
   isOpen: boolean;
-  onClose: () => void;
+  onClose: () => void;  // Aquí se pasa la prop onClose
 };
 
 const DraggableResizableWindow = ({ app, isOpen, onClose }: WindowProps) => {
   const [isMaximized, setIsMaximized] = useState(false);
-  const [animationClass, setAnimationClass] = useState('animate__fadeInUpBig');
-  const [isClosing, setIsClosing] = useState(false);
 
   const width = window.innerWidth * 0.5;
   const height = window.innerHeight * 0.6;
@@ -26,13 +24,7 @@ const DraggableResizableWindow = ({ app, isOpen, onClose }: WindowProps) => {
   };
 
   const handleClose = () => {
-    setAnimationClass('animate__fadeOutUpBig'); // Cambia la animación a la de salida
-    setIsClosing(true); // Marca que la ventana está cerrándose
-
-    // Espera 1 segundo para que la animación termine antes de cerrar la ventana
-    setTimeout(() => {
-      onClose();
-    }, 1000); // Duración de la animación (1 segundo)
+    onClose();  // Llama a la función onClose recibida
   };
 
   const maxSize = {
@@ -40,31 +32,9 @@ const DraggableResizableWindow = ({ app, isOpen, onClose }: WindowProps) => {
     height: window.innerHeight,
   };
 
-  // Resetea la animación cuando la ventana se vuelve a abrir
-  useEffect(() => {
-    if (isOpen) {
-      setAnimationClass('animate__fadeInUpBig');
-      setIsClosing(false); // Reseteamos el estado de cierre
-    }
-  }, [isOpen]);
-
-  // Cambia el estilo del contenedor para ocultar el scroll durante la animación de apertura y cierre
-  useEffect(() => {
-    if (isOpen || isClosing) {
-      document.body.style.overflow = 'hidden'; // Oculta el scroll durante la animación de apertura y cierre
-    } else {
-      document.body.style.overflow = 'auto'; // Restaura el scroll después de la animación
-    }
-
-    // Limpia el estilo al desmontar el componente o después de la animación
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen, isClosing]);
-
   return (
     <>
-      {isOpen && (
+      {isOpen && (  // Solo mostrar la ventana si isOpen es true
         <Rnd
           default={{
             x: x,
@@ -76,15 +46,16 @@ const DraggableResizableWindow = ({ app, isOpen, onClose }: WindowProps) => {
           minHeight={100}
           bounds="parent"
           enableResizing={true}
+          size={isMaximized ? maxSize : undefined}
+          className="animate__animated animate__fadeIn"
         >
           <div
-            className={`animate__animated ${animationClass}`}
             style={{
               width: '100%',
               height: '100%',
               background: 'lightgray',
               borderRadius: '8px',
-              overflow: 'auto', // Este estilo controla el desbordamiento dentro de la ventana
+              overflow: 'auto',
             }}
           >
             {/* Barra de título */}
@@ -97,7 +68,7 @@ const DraggableResizableWindow = ({ app, isOpen, onClose }: WindowProps) => {
                   <FaWindowMaximize className="text-white" />
                 </button>
                 <button
-                  onClick={handleClose}
+                  onClick={handleClose}  // Llama a handleClose cuando se hace clic en el botón de cerrar
                   className="w-6 h-6 rounded-full bg-red-500 hover:bg-red-700 flex items-center justify-center"
                 >
                   <FaTimes className="text-white" />
