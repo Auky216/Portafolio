@@ -10,13 +10,21 @@
   },
   "dependencies": {
     "@react-three/postprocessing": "^2.19.0",
+    "animate.css": "^4.1.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.474.0",
+    "motion": "^12.0.3",
     "next": "15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-draggable": "^4.4.6",
     "react-icons": "^5.4.0",
     "react-pixelify": "^0.2.2",
-    "react-powerglitch": "^1.1.0"
+    "react-powerglitch": "^1.1.0",
+    "react-rnd": "^10.4.14",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
