@@ -74,7 +74,7 @@ const DraggableResizableWindow = ({ app, isOpen, onClose }: WindowProps) => {
                   <FaTimes className="text-white" />
                 </button>
               </div>
-              <p className="text-gray-500 mx-auto font-medium">Mi Ventana</p>
+              <p className="text-gray-500 mx-auto font-medium">{app}</p>
             </div>
 
             {/* Contenido de la ventana */}
