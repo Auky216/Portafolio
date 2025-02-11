@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Rnd } from 'react-rnd';
 import Safari from '@/app/components/Safari/Safari';
+import AppStore from '../AppStore/AppStore';
 import { FaTimes, FaWindowMaximize } from 'react-icons/fa';
 import 'animate.css/animate.min.css';
 
@@ -80,6 +81,7 @@ const DraggableResizableWindow = ({ app, isOpen, onClose }: WindowProps) => {
             {/* Contenido de la ventana */}
             <div>
               {app === 'Safari' && <Safari />}
+              {app === 'App Store' && <AppStore />}
             </div>
           </div>
         </Rnd>
