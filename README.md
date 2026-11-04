@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portafolio de Adrian Auqui
 
-## Getting Started
+Portafolio web personal con una interfaz inspirada en un escritorio. Las secciones se abren en ventanas interactivas desde la barra inferior. Está construido con Next.js, React, TypeScript y Tailwind CSS.
 
-First, run the development server:
+## Requisitos
+
+- Node.js y npm compatibles con las versiones declaradas en `package.json`
+
+## Instalación y uso
 
 ```bash
+git clone https://github.com/Auky216/Portafolio.git
+cd Portafolio
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000). Para generar la versión de producción, ejecuta `npm run build`; para servirla localmente, usa `npm run start`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estructura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/page.tsx`: estado de las ventanas y página principal.
+- `src/app/components/`: navegación y componentes visuales.
+- `public/`: recursos estáticos.
 
-## Learn More
+## Estado
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Proyecto personal en desarrollo. El fondo de la página principal se carga desde una URL externa; para una publicación estable conviene sustituirlo por un recurso propio o con licencia verificada. No se ha declarado una licencia de reutilización para el código y los recursos del portafolio.
